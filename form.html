@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test From</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="jquery.maskedinput.min.js"></script>
+</head>
+<body>
+
+  <script type="text/javascript" language="javascript">
+
+$(document).ready(function() {
+        $("#phone").mask("+999999999999");
+    })
+  
+    function call() {
+      var msg   = $('.js-user-profile-submit').serialize();
+         $.ajax({
+           type: 'POST',
+           url: 'https://bloggy-api.herokuapp.com/posts',
+           data: msg,
+           success: function(data) {
+            $(console.log(data))
+           },
+           error:  function(xhr, str){
+       alert('Возникла ошибка: ' + xhr.responseCode);
+           }
+         });
+     }
+ </script>
+
+<form class="js-user-profile-submit" method="POST" id="formx" action="javascript:void(null);" onsubmit="call()">
+  <legend>Test From</legend>
+  <label for="name">Name:</label><input id="name" name="title" value="" type="text">
+  <label for="phone">Phone:</label><input id="phone" name="body" value="" type="text">
+  <input value="Send" type="submit">
+  </form>
+
+<!-- В Postman можете проверить введенные данные методом GET по ссылке https://bloggy-api.herokuapp.com/posts -->
+
+</body>
+</html>
